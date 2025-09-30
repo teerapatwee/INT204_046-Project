@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+
+<th:block th:insert="~{flagments/page-header}"/>
+
+    <div class="outer">
+        <div class="error" th:if="${products == null or #lists.isEmpty(products)}"><h3>Product does not exist!!!</h3></div>
+        <div class="content" th:each="p : ${products}">
+            <a th:href="@{'/details?productCode=' + ${p.getProductCode()}}">
+                <div class="pic">
+                    <img th:src="'model-images/'+${#strings.replace(p.productLine, ' ', '%20')}+'/'+${p.productCode}+'.jpg'"
+                         onerror="this.src = 'default-images/default.png'"
+                         alt="no picture"/>
+                </div>
+                <div class="desc">
+                    <div>
+                        <div class="type">
+                            <h3>Type:</h3>
+                            <p th:text="${p.productLine}"></p>
+                        </div>
+                        <div class="code">
+                            <h3>Code:</h3>
+                            <p th:text="${p.productCode}"></p>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <h3>Name:</h3>
+                        <p th:text="${p.productName}"></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+<style>
+
+    .outer{
+        margin: 20px auto;
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .outer .error{
+        width: 100%;
+    }
+    .outer .error h3{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: #6a1515;
+        font-size: 30px;
+        margin-top: 30px;
+    }
+    .content{
+        width: 300px;
+        margin-bottom: 30px;
+    }
+    .content a {
+        width: 300px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        color: white;
+        background: #3e3d3d;
+        border:15px outset #bfa159;
+    }
+    .pic img{
+        width: 271px;
+        height: 215px;
+    }
+    .desc div:first-child{
+        display: flex;
+        justify-content: space-around;
+    }
+    .desc h3{
+        font-size: 18px;
+    }
+    .desc p{
+        font-size: 14px;
+        opacity: 0.6;
+    }
+    .desc .type , .desc .code{
+       margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+    }
+    .desc .type{
+        margin-left: 5px;
+
+    }
+    .desc .code{
+        margin-right: 5px;
+    }
+    .desc .name{
+        margin: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .desc .code , .desc .type , .desc .name{
+        gap: 3px;
+    }
+
+</style>
+
+</body>
+</html>

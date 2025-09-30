@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+<th:block th:insert="~{flagments/page-header}"/>
+
+<div class="container">
+    <h2>Product Details</h2>
+    <div class="card">
+        <div class="image">
+            <img th:src="'model-images/'+${#strings.replace(products.productLine, ' ', '%20')}+'/'+${products.productCode}+'.jpg'"
+                 onerror="this.src = 'default-images/default.png'"
+                 alt="no picture"/>
+        </div>
+        <div class="code">
+            <h3>Product Code:</h3>
+            <span th:text="${products.productCode}"/> <br>
+
+        </div>
+        <div class="name">
+            <h3>Product Name:</h3>
+            <span th:text="${products.productName}"/> <br>
+        </div>
+        <div class="line">
+            <h3>Product Line:</h3>
+            <span th:text="${products.productLine}"/> <br>
+        </div>
+        <div class="scale">
+            <h3>Product Scale:</h3>
+            <span th:text="${products.productScale}"/> <br>
+        </div>
+        <div class="Vendor">
+            <h3>Product Vendor:</h3>
+            <span th:text="${products.productVendor}"/> <br>
+        </div>
+        <div class="description">
+            <h3>Product Description:</h3>
+            <span th:text="${products.productDescription}"/> <br>
+        </div>
+        <div class="qis">
+            <h3>Quantity In Stock:</h3>
+            <span th:text="${products.quantityInStock}"/> <br>
+        </div>
+        <div class="bp">
+            <h3>Buy Price:</h3>
+            <span th:text="${products.buyPrice}"/> <br>
+        </div>
+        <div class="msrp">
+            <h3>MSRP:</h3>
+            <span th:text="${products.msrp}"/>
+        </div>
+        <div class="btn">
+            <a th:href="@{'/update?productCode=' + ${products.getProductCode()}}"><button>Update</button></a>
+            <a th:href="@{'/delete?productCode=' + ${products.getProductCode()}}"><button>Delete</button></a>
+        </div>
+        <a href="/products"><button>OK</button></a>
+    </div>
+
+</div>
+
+
+<style>
+    .b2{
+        display: none;
+    }
+    .container{
+        margin:30px 0 ;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    h2{
+        background: #cf9d32;
+        font-size: 30px;
+        color: #3e3d3d;
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 0;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 8px 8px 9px black;
+    }
+    .container .card{
+        background: #3e3d3d;
+        padding: 20px;
+        border-top: none;
+        width: 60%;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 8px 8px 9px black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .container .card .image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container .card .image img{
+        width: 60%;
+        height: auto;
+        border-radius: 10px;
+    }
+    .container .card div{
+        margin-bottom: 20px;
+        width: 500px;
+    }
+    .container .card div span{
+        display: flex;
+        background: #3e3c3a;
+        color: white;
+        padding:  0 5px;
+        font-size: 20px;
+    }
+
+    .container h3{
+        font-size: 25px;
+        margin-bottom: 10px;
+        color:#ffb401;
+    }
+    .container .card button{
+        background: #cf9d32;
+        color: #3e3d3d;
+        font-size: 20px;
+        font-weight: 700;
+        padding: 20px 0;
+        width: 400px;
+    }
+    .container .card .btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin: 20px 0;
+    }
+    .container .card .btn a:last-child button{
+        background: #7a1d1d;
+        color: white;
+    }
+    .container .card .btn button{
+        width: 230px;
+
+    }
+</style>
+</style>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Creating Form</title>
+</head>
+<body>
+<th:block th:insert="~{flagments/page-header}"/>
+<form action="/update" method="post">
+    <div class="container">
+        <h2>Product Update Form</h2>
+        <div class="card">
+            <div class="code">
+                <h3>Product Code:</h3>
+                <input type="text" name="productCode" th:value="${products.productCode}">
+            </div>
+            <div class="name">
+                <h3>Product Name:</h3>
+                <input type="text" name="productName" th:value="${products.productName}">
+            </div>
+            <div class="line">
+                <div class="radio">
+                    <div>
+                        <input name="productLine" id="classicCars" type="radio" value="Classic Cars" th:checked="${products.getProductLine() == 'Classic Cars'}">
+                        <label for="classicCars">Classic Cars</label>
+                    </div>
+                    <div>
+                        <input name="productLine" id="motorcycles" type="radio" value="Motorcycles" th:checked="${products.getProductLine() == 'Motorcycles'}">
+                        <label for="motorcycles">Motorcycles</label>
+                    </div>
+                    <div>
+                        <input name="productLine" id="planes" type="radio" value="Planes" th:checked="${products.getProductLine() == 'Planes'}">
+                        <label for="planes">Planes</label>
+                    </div>
+                    <div>
+                        <input name="productLine" id="ships" type="radio" value="Ships" th:checked="${products.getProductLine() == 'Ships'}">
+                        <label for="ships">Ships</label>
+                    </div>
+                    <div>
+                        <input name="productLine" id="trains" type="radio" value="Trains" th:checked="${products.getProductLine() == 'Trains'}">
+                        <label for="trains">Trains</label>
+                    </div>
+                    <div>
+                        <input name="productLine" id="trucksAndBuses" type="radio" value="Trucks and Buses" th:checked="${products.getProductLine() == 'Trucks and Buses'}">
+                        <label for="trucksAndBuses">Trucks and Buses</label>
+                    </div>
+                    <div>
+                        <input name="productLine" id="vintageCars" type="radio" value="Vintage Cars" th:checked="${products.getProductLine() == 'Vintage Cars'}">
+                        <label for="vintageCars">Vintage Cars</label>
+                    </div>
+                </div>
+            </div>
+            <div class="scale">
+                <h3>Product Scale:</h3>
+                <input type="text" name="productScale" placeholder="Ex: 1:12" th:value="${products.productScale}">
+            </div>
+            <div class="Vendor">
+                <h3>Product Vendor:</h3>
+                <input type="text" name="productVendor" placeholder="Enter the product Vendor" th:value="${products.productVendor}">
+            </div>
+            <div class="description">
+                <h3>Product Description:</h3>
+                <input type="text" name="productDescription" placeholder="Enter the Description" th:value="${products.productDescription}">
+            </div>
+            <div class="qis">
+                <h3>Quantity In Stock:</h3>
+                <input type="text" name="quantityInStock" placeholder="Ex: 15" th:value="${products.quantityInStock}">
+            </div>
+            <div class="bp">
+                <h3>Buy Price:</h3>
+                <input type="text" name="buyPrice" placeholder="Ex: 34.23" th:value="${products.buyPrice}">
+            </div>
+            <div class="msrp">
+                <h3>MSRP:</h3>
+                <input type="text" name="msrp" placeholder="Ex: 232.23" th:value="${products.msrp}">
+            </div>
+            <input type="submit" value="Save"/>
+        </div>
+
+    </div>
+</form>
+
+<style>
+    .b2{
+        display: none;
+    }
+    .container{
+        margin:30px 0 ;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    h2{
+        background: #cf9d32;
+        font-size: 30px;
+        color: #3e3d3d;
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 0;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 8px 8px 9px black;
+    }
+    .container .card{
+        background: #3e3d3d;
+        padding: 20px;
+        border-top: none;
+        width: 60%;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 8px 8px 9px black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .container .card div{
+        margin-bottom: 20px;
+    }
+    .container  div input{
+        background: #3e3c3a;
+        color: white;
+        padding: 15px 10px;
+        width: 500px;
+    }
+
+    .container div .radio{
+        padding:  0 3px;
+        padding-top: 10px;
+        margin: 0;
+        background: #3e3c3a;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 500px;
+        border: 2px inset gray;
+    }
+
+    .container div .radio div{
+        display: flex;
+        align-items: center;
+    }
+
+    .container div .radio div:last-child{
+        margin-bottom: 10px;
+    }
+
+    .container .radio label{
+        color: #a19d9d;
+        font-size: 20px;
+    }
+    .container .radio input[type="radio"]{
+        width: 20px;
+    }
+    .container h3{
+        font-size: 25px;
+        margin-bottom: 10px;
+        color:#ffb401;
+    }
+
+    .container .card input[type="submit"]{
+        background: #cf9d32;
+        color: #3e3d3d;
+        font-size: 20px;
+        font-weight: 700;
+    }
+</style>
+</body>
+</html>
